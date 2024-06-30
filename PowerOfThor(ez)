@@ -1,0 +1,69 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+
+/**
+ * Auto-generated code below aims at helping you parse
+ * the standard input according to the problem statement.
+ * ---
+ * Hint: You can use the debug stream to print initialTX and initialTY, if Thor seems not follow your orders.
+ **/
+
+#define MAX_WIDTH 40
+#define MAX_HEIGHT 18
+int main()
+{
+    // the X position of the light of power
+    int light_x;
+    // the Y position of the light of power
+    int light_y;
+    // Thor's starting X position
+    int initial_tx;
+    // Thor's starting Y position
+    int initial_ty;
+    scanf("%d%d%d%d", &light_x, &light_y, &initial_tx, &initial_ty);
+
+    // game loop
+    while (1) {
+        char movement[20];
+        // The remaining amount of turns Thor can move. Do not remove this line.
+        int remaining_turns;
+        scanf("%d", &remaining_turns);
+        
+        strcpy(movement,"");
+        
+        int xmove;
+        int ymove;
+
+        xmove = light_x - initial_tx;
+        ymove = light_y - initial_ty;
+
+        if(ymove >0)
+        {
+            strcat(movement, "S");
+            initial_ty +=1;
+        }
+        else if(ymove<0)
+        {
+            strcat(movement, "N");
+            initial_ty -=1;
+        }
+        
+        if (xmove>0)
+        {
+            strcat(movement, "E");
+            initial_tx +=1;
+        }
+        else if (xmove<0)
+        {
+            strcat(movement, "W");
+            initial_tx -=1;
+        }
+        // A single line providing the move to be made: N NE E SE S SW W or NW
+        printf("%s\n",movement);
+        
+    }
+
+    return 0;
+}
